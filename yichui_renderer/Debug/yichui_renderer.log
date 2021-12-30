@@ -1,0 +1,6 @@
+﻿  tgaimage.cpp
+E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\Core\tgaimage.h(43,54): warning C4244: “=”: 从“double”转换到“uint8_t”，可能丢失数据
+  main.cpp
+E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\Core\tgaimage.h(43,54): warning C4244: “=”: 从“double”转换到“uint8_t”，可能丢失数据
+  正在生成代码...
+  yichui_renderer.vcxproj -> E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\Debug\yichui_renderer.exe
