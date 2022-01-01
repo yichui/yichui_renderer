@@ -27,15 +27,18 @@
     <ClCompile Include="Core\model.cpp">
       <Filter>Core</Filter>
     </ClCompile>
+    <ClCompile Include="Core\geometry.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\tgaimage.h">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="Core\geometry.h">
+    <ClInclude Include="Core\model.h">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="Core\model.h">
+    <ClInclude Include="Core\geometry.h">
       <Filter>Core</Filter>
     </ClInclude>
   </ItemGroup>
