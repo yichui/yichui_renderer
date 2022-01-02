@@ -200,6 +200,26 @@ void triangle(Vec2i* pts, TGAImage& image, TGAColor color) {
 	}
 }
 
+void triangle(Vec2i t0, Vec2i t1, Vec2i t2, TGAImage& image, TGAColor color) {
+	if (t0.y == t1.y && t0.y == t2.y) return; // i dont care about degenerate triangles
+	if (t0.y > t1.y) std::swap(t0, t1);
+	if (t0.y > t2.y) std::swap(t0, t2);
+	if (t1.y > t2.y) std::swap(t1, t2);
+	int total_height = t2.y - t0.y;
+	for (int i = 0; i < total_height; i++) {
+		bool second_half = i > t1.y - t0.y || t1.y == t0.y;
+		int segment_height = second_half ? t2.y - t1.y : t1.y - t0.y;
+		float alpha = (float)i / total_height;
+		float beta = (float)(i - (second_half ? t1.y - t0.y : 0)) / segment_height; // be careful: with above conditions no division by zero here
+		Vec2i A = t0 + (t2 - t0) * alpha;
+		Vec2i B = second_half ? t1 + (t2 - t1) * beta : t0 + (t1 - t0) * beta;
+		if (A.x > B.x) std::swap(A, B);
+		for (int j = A.x; j <= B.x; j++) {
+			image.set(j, t0.y + i, color); // attention, due to int casts t0.y+i != A.y
+		}
+	}
+}
+
 
 //test draw line
 //int main(int argc, char** argv) 
@@ -267,27 +287,58 @@ void triangle(Vec2i* pts, TGAImage& image, TGAColor color) {
 //	return 0;
 //}
 
+
+//Bounding Box and barycentric coordinates
+//int main(int argc, char** argv) {
+//	TGAImage frame(200, 200, TGAImage::RGB);
+//	Vec2i pts[3] = { Vec2i(10,10), Vec2i(100, 30), Vec2i(190, 160) };
+//	triangle(pts, frame, TGAColor(255, 0, 0, 255));
+//	frame.flip_vertically();
+//	frame.write_tga_file("framebuffer.tga");
+//	return 0;
+//}
+
+
 int main(int argc, char** argv) {
-	TGAImage frame(200, 200, TGAImage::RGB);
-	Vec2i pts[3] = { Vec2i(10,10), Vec2i(100, 30), Vec2i(190, 160) };
-	triangle(pts, frame, TGAColor(255, 0, 0, 255));
-	frame.flip_vertically();
-	frame.write_tga_file("framebuffer.tga");
+	Model* model = NULL;
+	if (2 == argc) {
+		model = new Model(argv[1]);
+	}
+	else {
+		model = new Model("Obj/african_head/african_head.obj");
+	}
+	TGAImage image(width, height, TGAImage::RGB);
+
+	Vec3f light_dir(0, 0, -1);
+	//遍历模型每个三角面
+	for (int i = 0; i < model->nfaces(); i++) {
+		std::vector<int> face = model->face(i);
+		Vec2i screen_coords[3];  //屏幕坐标系
+		Vec3f world_coords[3]; //世界坐标系
+		for (int j = 0; j < 3; j++) {
+			
+			//Vec3f world_coords = model->vert(face[j]);
+			Vec3f v = model->vert(face[j]);
+			//将面所包含的三个顶点转成屏幕坐标
+			screen_coords[j] = Vec2i((v.x + 1.) * width / 2., (v.y + 1.) * height / 2.);
+			//存储世界坐标方便后续使用
+			world_coords[j] = v;
+		}
+		//用世界坐标计算法向量
+		//vec3里定义模板Vec3的cross叉乘
+		Vec3f n = (world_coords[2] - world_coords[0]) ^ (world_coords[1] - world_coords[0]);
+		n.normalize();
+		float intensity = n * light_dir;//光照强度=法向量*光照方向   即法向量和光照方向重合时，亮度最高
+		//强度小于0，说明平面朝向为内  即背面裁剪
+		if (intensity > 0) {
+			triangle(screen_coords[0], screen_coords[1], screen_coords[2], image, TGAColor(intensity * 255, intensity * 255, intensity * 255, 255));
+		}
+		//triangle(screen_coords, image, TGAColor(rand() % 255, rand() % 255, rand() % 255, 255));
+	}
+	image.flip_vertically();
+	image.write_tga_file("framebuffer3.tga");
 	return 0;
 }
-
-
-// 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
-// 调试程序: F5 或调试 >“开始调试”菜单
-
-// 入门使用技巧: 
-//   1. 使用解决方案资源管理器窗口添加/管理文件
-//   2. 使用团队资源管理器窗口连接到源代码管理
-//   3. 使用输出窗口查看生成输出和其他消息
-//   4. 使用错误列表窗口查看错误
-//   5. 转到“项目”>“添加新项”以创建新的代码文件，或转到“项目”>“添加现有项”以将现有代码文件添加到项目
-//   6. 将来，若要再次打开此项目，请转到“文件”>“打开”>“项目”并选择 .sln 文件
-
 
 /**
  * learn from:

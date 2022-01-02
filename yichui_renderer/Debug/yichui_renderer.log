@@ -1,5 +1,4 @@
-﻿  model.cpp
-  main.cpp
+﻿  main.cpp
 E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\Core\tgaimage.h(43,54): warning C4244: “=”: 从“double”转换到“uint8_t”，可能丢失数据
 E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\main.cpp(178,75): warning C4244: “参数”: 从“t”转换到“t”，可能丢失数据
           with
@@ -55,5 +54,30 @@ E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\main
           [
               t=float
           ]
-  正在生成代码...
+E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\main.cpp(323,74): warning C4244: “参数”: 从“double”转换到“t”，可能丢失数据
+          with
+          [
+              t=int
+          ]
+E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\main.cpp(323,48): warning C4244: “参数”: 从“double”转换到“t”，可能丢失数据
+          with
+          [
+              t=int
+          ]
+E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\main.cpp(333,127): warning C4244: “参数”: 从“float”转换到“const uint8_t”，可能丢失数据
+E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\main.cpp(333,110): warning C4244: “参数”: 从“float”转换到“const uint8_t”，可能丢失数据
+E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\main.cpp(333,93): warning C4244: “参数”: 从“float”转换到“const uint8_t”，可能丢失数据
+E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\Core\geometry.h(18,78): warning C4244: “参数”: 从“float”转换到“t”，可能丢失数据
+          with
+          [
+              t=int
+          ]
+E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\Core\geometry.h(18): message : 在编译 类 模板 成员函数“Vec2<int> Vec2<int>::operator *(float) const”时
+E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\main.cpp(214): message : 查看对正在编译的函数 模板 实例化“Vec2<int> Vec2<int>::operator *(float) const”的引用
+E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\main.cpp(177): message : 查看对正在编译的 类 模板 实例化“Vec2<int>”的引用
+E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\Core\geometry.h(18,71): warning C4244: “参数”: 从“float”转换到“t”，可能丢失数据
+          with
+          [
+              t=int
+          ]
   yichui_renderer.vcxproj -> E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\Debug\yichui_renderer.exe
