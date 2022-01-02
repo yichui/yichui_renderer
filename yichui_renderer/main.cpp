@@ -170,12 +170,13 @@ void line(int x0, int y0, int x1, int y1, TGAImage& image, TGAColor color)
 //}
 
 
-Vec3f barycentric(Vec2i* pts, Vec2i P) {
-	Vec3f u = cross(Vec3f(pts[2][0] - pts[0][0], pts[1][0] - pts[0][0], pts[0][0] - P[0]), Vec3f(pts[2][1] - pts[0][1], pts[1][1] - pts[0][1], pts[0][1] - P[1]));
-	/* `pts` and `P` has integer value as coordinates
-	   so `abs(u[2])` < 1 means `u[2]` is 0, that means
-	   triangle is degenerate, in this case return something with negative coordinates */
-	if (std::abs(u[2]) < 1) return Vec3f(-1, 1, 1);
+Vec3f cross(const Vec3f& v1, const Vec3f& v2) {
+	return Vec3f{v1.y* v2.z - v1.z * v2.y, v1.z* v2.x - v1.x * v2.z, v1.x* v2.y - v1.y * v2.x};
+}
+
+Vec3f barycentric(Vec2i pts[3], Vec2i P) {
+	Vec3f u = cross(Vec3f(pts[2].u - pts[0].u, pts[1].u - pts[0].u, pts[0].u - P.u), Vec3f(pts[2].v - pts[0].v, pts[1].v - pts[0].v, pts[0].v - P.v));
+	if (std::abs(u.z) < 1) return Vec3f(-1, 1, 1);
 	return Vec3f(1.f - (u.x + u.y) / u.z, u.y / u.z, u.x / u.z);
 }
 
@@ -183,14 +184,14 @@ void triangle(Vec2i* pts, TGAImage& image, TGAColor color) {
 	Vec2i bboxmin(image.get_width() - 1, image.get_height() - 1);
 	Vec2i bboxmax(0, 0);
 	Vec2i clamp(image.get_width() - 1, image.get_height() - 1);
-	for (int i = 0; i < 3; i++) {
-		for (int j = 0; j < 2; j++) {
-			bboxmin[j] = std::max(0, std::min(bboxmin[j], pts[i][j]));
-			bboxmax[j] = std::min(clamp[j], std::max(bboxmax[j], pts[i][j]));
-		}
+	for (int i = 0; i < 3; i++) { //限定bounding box
+		bboxmin.u = std::min(bboxmin.u, pts[i].u);
+		bboxmin.v = std::min(bboxmin.v, pts[i].v);
+		bboxmax.u = std::max(bboxmax.u, pts[i].u);
+		bboxmax.v = std::max(bboxmax.v, pts[i].v);
 	}
 	Vec2i P;
-	for (P.x = bboxmin.x; P.x <= bboxmax.x; P.x++) {
+	for (P.x = bboxmin.x; P.x <= bboxmax.x; P.x++) { //遍历执行barycentric
 		for (P.y = bboxmin.y; P.y <= bboxmax.y; P.y++) {
 			Vec3f bc_screen = barycentric(pts, P);
 			if (bc_screen.x < 0 || bc_screen.y < 0 || bc_screen.z < 0) continue;

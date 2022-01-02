@@ -139,7 +139,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Core\geometry.cpp" />
     <ClCompile Include="Core\model.cpp" />
     <ClCompile Include="Core\tgaimage.cpp" />
     <ClCompile Include="main.cpp" />
