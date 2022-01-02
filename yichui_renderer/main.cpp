@@ -54,7 +54,12 @@ void line(int x0, int y0, int x1, int y1, TGAImage& image, TGAColor color)
 
 
 
-
+/// <summary>
+/// 叉乘
+/// </summary>
+/// <param name="v1"></param>
+/// <param name="v2"></param>
+/// <returns></returns>
 Vec3f cross(const Vec3f& v1, const Vec3f& v2) {
 	return Vec3f{v1.y* v2.z - v1.z * v2.y, v1.z* v2.x - v1.x * v2.z, v1.x* v2.y - v1.y * v2.x};
 }
@@ -71,7 +76,7 @@ Vec3f cross(const Vec3f& v1, const Vec3f& v2) {
 //	return Vec3f(1.f - (u.x + u.y) / u.z, u.y / u.z, u.x / u.z);
 //}
 
-//计算质心坐标
+//计算重心坐标
 Vec3f barycentric(Vec3f A, Vec3f B, Vec3f C, Vec3f P) {
 	Vec3f s[2];
 	//计算[AB,AC,PA]的x和y分量
