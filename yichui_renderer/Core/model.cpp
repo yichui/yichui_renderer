@@ -16,9 +16,12 @@ Model::Model(const char *filename) : verts_(), faces_() {
     std::string line;
     while (!in.eof()) {
         std::getline(in, line);
+        ////使用输入控制流来控制读取，c_str提取首字符地址。
         std::istringstream iss(line.c_str());
         char trash;
+        //compare函数比较从0开始的2个字符，若等于之后字符串的内容则返回0，故表达式表示该行字符串以“v ”开头则为true。
         if (!line.compare(0, 2, "v ")) {
+            //>>读取的是字符，此处将“v ”内容跳过，读取后续信息，对不同类型数据有不同的重载
             iss >> trash;
             Vec3f v;
             for (int i=0;i<3;i++) iss >> v[i];
@@ -27,6 +30,8 @@ Model::Model(const char *filename) : verts_(), faces_() {
             std::vector<int> f;
             int itrash, idx;
             iss >> trash;
+			//此处的循环需要读取的是x/x/x中第一个数字，代表三维坐标轴数据，所以通过下述while条件即可每次获取idx内容。
+            //通过改变一定的顺序即可获取其他位置的数字，比如第二个x就是我们需要的材质文件像素点vt坐标。
             while (iss >> idx >> trash >> itrash >> trash >> itrash) {
                 idx--; // in wavefront obj all indices start at 1, not zero
                 f.push_back(idx);
