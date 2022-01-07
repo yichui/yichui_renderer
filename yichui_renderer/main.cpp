@@ -186,7 +186,7 @@ int main(int argc, char** argv) {
 	}
 
 	image.flip_vertically();
-	image.write_tga_file("framebuffer4.tga");
+	image.write_tga_file("framebuffer5.tga");
 	return 0;
 }
 
