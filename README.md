@@ -3,3 +3,4 @@
 1.Bresenham’s Line Drawing Algorithm
 2.Triangle rasterization and back face culling
 3.Hidden faces removal (z buffer)
+4.Perspective-projection
