@@ -5,27 +5,20 @@
 #include <vector>
 #include "model.h"
 
-Model::Model(const char *filename) : verts_(), faces_() {
-    std::ifstream in;
-    in.open (filename, std::ifstream::in);
-    if (in.fail())
-    {
-        std::cerr << "open file failed"  << std::endl;
-        return;
-    }
-    std::string line;
-    while (!in.eof()) {
-        std::getline(in, line);
-        ////使用输入控制流来控制读取，c_str提取首字符地址。
-        std::istringstream iss(line.c_str());
-        char trash;
-        //compare函数比较从0开始的2个字符，若等于之后字符串的内容则返回0，故表达式表示该行字符串以“v ”开头则为true。
-        if (!line.compare(0, 2, "v ")) {
-            //>>读取的是字符，此处将“v ”内容跳过，读取后续信息，对不同类型数据有不同的重载
-            iss >> trash;
-            Vec3f v;
-            for (int i=0;i<3;i++) iss >> v[i];
-            verts_.push_back(v);
+Model::Model(const char* filename) : verts_(), faces_(), norms_(), uv_() {
+	std::ifstream in;
+	in.open(filename, std::ifstream::in);
+	if (in.fail()) return;
+	std::string line;
+	while (!in.eof()) {
+		std::getline(in, line);
+		std::istringstream iss(line.c_str());
+		char trash;
+		if (!line.compare(0, 2, "v ")) {
+			iss >> trash;
+			Vec3f v;
+			for (int i = 0; i < 3; i++) iss >> v[i];
+			verts_.push_back(v);
 		}
 		else if (!line.compare(0, 3, "vn ")) {
 			iss >> trash >> trash;
@@ -40,31 +33,29 @@ Model::Model(const char *filename) : verts_(), faces_() {
 			uv_.push_back(uv);
 		}
 		else if (!line.compare(0, 2, "f ")) {
-            std::vector<Vec3i> f;
-            Vec3i tmp;
-            int itrash, idx;
-            iss >> trash;
-			//此处的循环需要读取的是x/x/x中第一个数字，代表三维坐标轴数据，所以通过下述while条件即可每次获取idx内容。
-            //通过改变一定的顺序即可获取其他位置的数字，比如第二个x就是我们需要的材质文件像素点vt坐标。
+			std::vector<Vec3i> f;
+			Vec3i tmp;
+			iss >> trash;
 			while (iss >> tmp[0] >> trash >> tmp[1] >> trash >> tmp[2]) {
 				for (int i = 0; i < 3; i++) tmp[i]--; // in wavefront obj all indices start at 1, not zero
 				f.push_back(tmp);
 			}
 			faces_.push_back(f);
-        }
-    }
-    std::cerr << "# v# " << verts_.size() << " f# "  << faces_.size() << std::endl;
+		}
+	}
+	std::cerr << "# v# " << verts_.size() << " f# " << faces_.size() << " vt# " << uv_.size() << " vn# " << norms_.size() << std::endl;
+	load_texture(filename, "_diffuse.tga", diffusemap_);
 }
 
 Model::~Model() {
 }
 
 int Model::nverts() {
-    return (int)verts_.size();
+	return (int)verts_.size();
 }
 
 int Model::nfaces() {
-    return (int)faces_.size();
+	return (int)faces_.size();
 }
 
 std::vector<int> Model::face(int idx) {
@@ -74,5 +65,26 @@ std::vector<int> Model::face(int idx) {
 }
 
 Vec3f Model::vert(int i) {
-    return verts_[i];
+	return verts_[i];
 }
+
+void Model::load_texture(std::string filename, const char* suffix, TGAImage& img) {
+	std::string texfile(filename);
+	size_t dot = texfile.find_last_of(".");
+	if (dot != std::string::npos) {
+		texfile = texfile.substr(0, dot) + std::string(suffix);
+		std::cerr << "texture file " << texfile << " loading " << (img.read_tga_file(texfile.c_str()) ? "ok" : "failed") << std::endl;
+		img.flip_vertically();
+	}
+}
+
+TGAColor Model::diffuse(Vec2i uv) {
+	return diffusemap_.get(uv.x, uv.y);
+}
+
+Vec2i Model::uv(int iface, int nvert) {
+	int idx = faces_[iface][nvert][1];
+	return Vec2i(uv_[idx].x * diffusemap_.get_width(), uv_[idx].y * diffusemap_.get_height());
+}
+
+

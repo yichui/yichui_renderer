@@ -1,10 +1,7 @@
 #ifndef __GEOMETRY_H__
 #define __GEOMETRY_H__
-#include <cmath>
-#include <vector>
-#include <cassert>
-#include <iostream>
 
+#include <cmath>
 
 template <class t> struct Vec2 {
 	t x, y;
@@ -68,6 +65,7 @@ template <class t> std::ostream& operator<<(std::ostream& s, Vec3<t>& v) {
 	s << "(" << v.x << ", " << v.y << ", " << v.z << ")\n";
 	return s;
 }
+
 //////////////////////////////////////////////////////////////////////////////////////////////
 
 const int DEFAULT_ALLOC = 4;
@@ -90,5 +88,6 @@ public:
 };
 
 /////////////////////////////////////////////////////////////////////////////////////////////
-#endif //__GEOMETRY_H__
 
+
+#endif //__GEOMETRY_H__

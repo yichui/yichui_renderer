@@ -1,75 +1,24 @@
-﻿  geometry.cpp
-E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\Core\geometry.cpp(7,36): error C2976: “Vec3”: 模板 参数太少
-E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\Core\geometry.h(28): message : 参见“Vec3”的声明
-E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\Core\geometry.cpp(7,43): error C2988: 不可识别的模板声明/定义
-E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\Core\geometry.cpp(7,43): error C2059: 语法错误:“const”
-E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\Core\geometry.cpp(7,72): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
-E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\Core\geometry.cpp(7,73): error C2065: “v”: 未声明的标识符
-E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\Core\geometry.cpp(7,90): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
-E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\Core\geometry.cpp(7,91): error C2065: “v”: 未声明的标识符
-E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\Core\geometry.cpp(7,108): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
-E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\Core\geometry.cpp(7,109): error C2065: “v”: 未声明的标识符
-E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\Core\geometry.cpp(7,120): error C2988: 不可识别的模板声明/定义
-E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\Core\geometry.cpp(7,120): error C2059: 语法错误:“{”
-E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\Core\geometry.cpp(7,120): error C2143: 语法错误: 缺少“;”(在“{”的前面)
-E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\Core\geometry.cpp(7,120): error C2447: “{”: 缺少函数标题(是否是老式的形式表?)
-E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\Core\geometry.cpp(10,38): error C2976: “Vec3”: 模板 参数太少
-E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\Core\geometry.h(28): message : 参见“Vec3”的声明
-E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\Core\geometry.cpp(10,45): error C2988: 不可识别的模板声明/定义
-E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\Core\geometry.cpp(10,45): error C2059: 语法错误:“const”
-E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\Core\geometry.cpp(10,70): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
-E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\Core\geometry.cpp(10,67): error C2374: “x”: 重定义；多次初始化
-E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\Core\geometry.cpp(7): message : 参见“x”的声明
-E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\Core\geometry.cpp(10,69): error C2065: “v”: 未声明的标识符
-E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\Core\geometry.cpp(10,78): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
-E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\Core\geometry.cpp(10,75): error C2374: “y”: 重定义；多次初始化
-E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\Core\geometry.cpp(7): message : 参见“y”的声明
-E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\Core\geometry.cpp(10,77): error C2065: “v”: 未声明的标识符
-E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\Core\geometry.cpp(10,86): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
-E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\Core\geometry.cpp(10,83): error C2374: “z”: 重定义；多次初始化
-E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\Core\geometry.cpp(7): message : 参见“z”的声明
-E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\Core\geometry.cpp(10,85): error C2065: “v”: 未声明的标识符
-E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\Core\geometry.cpp(10,90): error C2988: 不可识别的模板声明/定义
-E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\Core\geometry.cpp(10,90): error C2059: 语法错误:“{”
-E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\Core\geometry.cpp(10,90): error C2143: 语法错误: 缺少“;”(在“{”的前面)
-E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\Core\geometry.cpp(10,90): error C2447: “{”: 缺少函数标题(是否是老式的形式表?)
-  model.cpp
-E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\Core\tgaimage.h(43,54): warning C4244: “=”: 从“double”转换到“uint8_t”，可能丢失数据
-E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\Core\model.cpp(45,25): warning C4101: “idx”: 未引用的局部变量
-E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\Core\model.cpp(45,17): warning C4101: “itrash”: 未引用的局部变量
-  main.cpp
-E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\Core\tgaimage.h(43,54): warning C4244: “=”: 从“double”转换到“uint8_t”，可能丢失数据
-E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\main.cpp(99,53): warning C4244: “参数”: 从“int”转换到“t”，可能丢失数据
+﻿  main.cpp
+E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\main.cpp(17,30): warning C4305: “参数”: 从“double”到“t”截断
           with
           [
               t=float
           ]
-E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\main.cpp(99,18): warning C4244: “参数”: 从“int”转换到“t”，可能丢失数据
+E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\main.cpp(82,14): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\main.cpp(94,85): warning C4244: “参数”: 从“float”转换到“unsigned char”，可能丢失数据
+E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\main.cpp(94,64): warning C4244: “参数”: 从“float”转换到“unsigned char”，可能丢失数据
+E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\main.cpp(94,43): warning C4244: “参数”: 从“float”转换到“unsigned char”，可能丢失数据
+E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\Core\geometry.h(20,71): warning C4244: “参数”: 从“float”转换到“t”，可能丢失数据
           with
           [
-              t=float
+              t=int
           ]
-E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\main.cpp(106,56): warning C4244: “参数”: 从“int”转换到“t”，可能丢失数据
+E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\Core\geometry.h(20): message : 在编译 类 模板 成员函数“Vec2<int> Vec2<int>::operator *(float) const”时
+E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\main.cpp(75): message : 查看对正在编译的函数 模板 实例化“Vec2<int> Vec2<int>::operator *(float) const”的引用
+E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\main.cpp(55): message : 查看对正在编译的 类 模板 实例化“Vec2<int>”的引用
+E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\Core\geometry.h(20,64): warning C4244: “参数”: 从“float”转换到“t”，可能丢失数据
           with
           [
-              t=float
+              t=int
           ]
-E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\main.cpp(106,32): warning C4244: “参数”: 从“int”转换到“t”，可能丢失数据
-          with
-          [
-              t=float
-          ]
-E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\main.cpp(138,21): warning C4244: “参数”: 从“t”转换到“const int”，可能丢失数据
-          with
-          [
-              t=float
-          ]
-E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\main.cpp(138,16): warning C4244: “参数”: 从“t”转换到“const int”，可能丢失数据
-          with
-          [
-              t=float
-          ]
-E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\main.cpp(184,97): warning C4244: “参数”: 从“float”转换到“const uint8_t”，可能丢失数据
-E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\main.cpp(184,80): warning C4244: “参数”: 从“float”转换到“const uint8_t”，可能丢失数据
-E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\yichui_renderer\main.cpp(184,63): warning C4244: “参数”: 从“float”转换到“const uint8_t”，可能丢失数据
-  正在生成代码...
+  yichui_renderer.vcxproj -> E:\DendiWork\study\renderer\yichui_renderer\yichui_renderer\Debug\yichui_renderer.exe
