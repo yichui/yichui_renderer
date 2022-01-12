@@ -98,6 +98,35 @@ void triangle(Vec3i t0, Vec3i t1, Vec3i t2, Vec2i uv0, Vec2i uv1, Vec2i uv2, TGA
 	}
 }
 
+//朝向矩阵，变换矩阵
+//更改摄像机视角=更改物体位置和角度，操作为互逆矩阵
+//摄像机变换是先旋转再平移，所以物体需要先平移后旋转，且都是逆矩阵
+Matrix lookat(Vec3f eye, Vec3f center, Vec3f up) {
+    //计算出z，根据z和up算出x，再算出y
+    Vec3f z = (eye - center).normalize();
+    Vec3f x = (up ^ z).normalize();
+    Vec3f y = (z ^ x).normalize();
+    Matrix rotation = Matrix::identity(4);
+    Matrix translation = Matrix::identity(4);
+    //***矩阵的第四列是用于平移的。因为观察位置从原点变为了center，所以需要将物体平移-center***
+    for (int i = 0; i < 3; i++) {
+        rotation[i][3] = -center[i];
+    }
+    //正交矩阵的逆 = 正交矩阵的转置
+    //矩阵的第一行即是现在的x
+    //矩阵的第二行即是现在的y
+    //矩阵的第三行即是现在的z
+    //***矩阵的三阶子矩阵是当前视线旋转矩阵的逆矩阵***
+    for (int i = 0; i < 3; i++) {
+        rotation[0][i] = x[i];
+        rotation[1][i] = y[i];
+        rotation[2][i] = z[i];
+    }
+    //这样乘法的效果是先平移物体，再旋转
+    Matrix res = rotation*translation;
+    return res;
+}
+
 
 int main(int argc, char** argv) {
 	//读取模型
