@@ -8,7 +8,7 @@
 
 4.Perspective-projection
 
-5.Moving-the-camera
+5.Moving the camera
 
 
 link:
@@ -17,3 +17,5 @@ link:
 2.https://zhuanlan.zhihu.com/p/360838466
 
 3.https://github.com/ssloy/tinyrenderer/wiki/Lesson-5:-Moving-the-camera
+
+4.https://www.zhihu.com/people/yindou97/posts
