@@ -10,6 +10,8 @@
 
 5.Moving the camera
 
+6.Shaders for the software renderer
+
 
 link:
 1.https://zhuanlan.zhihu.com/p/400791821
