@@ -60,7 +60,8 @@ Vec3f barycentric(Vec2f A, Vec2f B, Vec2f C, Vec2f P) {
 }
 
 //绘制三角形
-void triangle(Vec4f *pts, IShader &shader, TGAImage &image, TGAImage &zbuffer) {
+void triangle(Vec4f *pts, IShader &shader, TGAImage &image, TGAImage &zbuffer) 
+{
     //初始化三角形边界框
     Vec2f bboxmin( std::numeric_limits<float>::max(),  std::numeric_limits<float>::max());
     Vec2f bboxmax(-std::numeric_limits<float>::max(), -std::numeric_limits<float>::max());
