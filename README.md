@@ -12,6 +12,7 @@
 
 6.Shaders for the software renderer
 
+6+.tangent space normal mapping
 
 link:
 1.https://zhuanlan.zhihu.com/p/400791821
